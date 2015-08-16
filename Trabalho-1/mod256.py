@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#Função de Vefificação de Ciclo em Cifra de Caesar
+
 def val_cod(key_val, char_val):
   val_final = (key_val + char_val)
   if (val_final > 255):
