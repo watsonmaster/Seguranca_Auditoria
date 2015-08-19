@@ -10,9 +10,11 @@ def input_file(nome_arq):
   #print(info)
   return info
 
-def output_file(out_info):
+def output_file(out_info, out_name):
   #arq_out = raw_input("Digite arquivo Output\n")
-  arq_out = open("arq_out.kod", "ab+")
+  #arq_out = open("arq_out.kod", "ab+")
+  nome_cypt = str(out_name[0:-3]) + "cry"
+  arq_out = open(nome_cypt, "wb+")
   arq_out.write(out_info)
   arq_out.close()
 
@@ -33,7 +35,8 @@ def val_desc(key_val, char_val):
 
 ##Inicio PROGRAMA
 
-nome = input_file(raw_input("Digite o arquivo a ser criptografado\n"))
+nome_file = raw_input("Digite o arquivo a ser criptografado\n")
+nome = input_file(nome_file)
 list_cypt = nome
 #print(list_cypt)
 while True:
@@ -47,6 +50,6 @@ for x in range(0, len(nome)):
   #list_cypt[x] = chr(ord(nome[x]) + Key)
   list_cypt[x] = chr(val_cod(Key, ord(nome[x])))
 val_cypt = ''.join(list_cypt)
-output_file(val_cypt)
+output_file(val_cypt, nome_file)
 
 ##Fim Criptografia
