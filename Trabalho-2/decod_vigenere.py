@@ -19,7 +19,7 @@ def input_file(nome_arq):
 def output_file(out_info, out_name):
   #arq_out = raw_input("Digite arquivo Output\n")
   #arq_out = open("arq_out.kod", "ab+")
-  nome_cypt = str(out_name[0:-3]) + "cry"
+  nome_cypt = str(out_name[0:-3]) + "dec"
   arq_out = open(nome_cypt, "wb+")
   arq_out.write(out_info)
   arq_out.close()
@@ -28,7 +28,6 @@ def output_file(out_info, out_name):
 nome = raw_input("Digite um arquivo a ser cryptografado\n")
 list_cypt = input_file(nome)
 key = list(raw_input("Digite a Chave de Codificação\n"))
-key_index = 0
 
 list_plain = list_cypt
 key_index = 0
@@ -45,5 +44,5 @@ for x in range(0, len(list_cypt), 1):
     val_key = ord(key[key_index])
     list_plain[x] = chr((val_desc(val_key, ord(list_plain[x]))))
     
-print(''.join(list_plain))
+#print(''.join(list_plain))
 output_file(''.join(list_plain), nome)
