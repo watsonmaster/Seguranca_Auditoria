@@ -5,17 +5,12 @@
 
 def val_cod(key_val, char_val):
   val_final = (key_val + char_val)
-  if (val_final > 255):
-    return (val_final%255)
+  if (val_final > 256):
+    return (val_final%256)
   return val_final
 
 def val_desc(key_val, char_val):
-  if (key_val == 255):
-    key_val = 1
-  val_final = char_val - (key_val%255)
-  if(val_final <= 0):
-    return 255 - abs(char_val - (key_val%255))
-  return val_final
+  return (char_val + (256-key_val))%256
 
 
 
