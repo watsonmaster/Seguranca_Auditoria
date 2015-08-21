@@ -4,13 +4,12 @@
 #Função de Vefificação de Ciclo em Cifra de Caesar
 
 def val_cod(key_val, char_val):
-  #val_final = (key_val + char_val)
-  #if (val_final > 256):
-    #return (val_final%256)
-  return char_val + (key_val%256)
+
+  return (char_val + key_val)%255
 
 def val_desc(key_val, char_val):
-  return (char_val + (256-key_val))%256
+  if (key_val == 0): return char_val
+  return (char_val + (255-key_val))%255
 
 
 

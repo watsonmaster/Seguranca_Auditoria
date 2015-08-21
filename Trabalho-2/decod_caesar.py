@@ -19,18 +19,12 @@ def output_file(out_info, out_name):
   arq_out.close()
 
 def val_cod(key_val, char_val):
-  val_final = (key_val + char_val)
-  if (val_final > 255):
-    return (val_final%255)
-  return val_final
+
+  return (char_val + key_val)%255
 
 def val_desc(key_val, char_val):
-  if (key_val == 255):
-    key_val = 1
-  val_final = char_val - (key_val%255)
-  if(val_final <= 0):
-    return 255 - abs(char_val - (key_val%255))
-  return val_final
+  if (key_val == 0): return char_val
+  return (char_val + (255-key_val))%255
 
 
 nome_file = raw_input("Digite o Arquivo para Descripografar\n")
