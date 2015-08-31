@@ -20,12 +20,18 @@ def output_file(out_info, out_name):
 
 
 def val_cod(key_val, char_val):
-
-  return (char_val + key_val)%255
+  val_final = (key_val + char_val)
+  if (val_final > 255):
+    return (val_final%255)
+  return val_final
 
 def val_desc(key_val, char_val):
-  if (key_val == 0): return char_val
-  return (char_val + (255-key_val))%255
+  if (key_val == 255):
+    key_val = 1
+  val_final = char_val - (key_val%255)
+  if(val_final <= 0):
+    return 255 - abs(char_val - (key_val%255))
+  return val_final
 
 ##Inicio PROGRAMA
 
@@ -42,8 +48,6 @@ while True:
 #print(len(nome))
 for x in range(0, len(nome)):
   #list_cypt[x] = chr(ord(nome[x]) + Key)
-  if (chr(val_cod(Key, ord(nome[x]))) > 255): 
-	print("Fodeu")
   list_cypt[x] = chr(val_cod(Key, ord(nome[x])))
 val_cypt = ''.join(list_cypt)
 output_file(val_cypt, nome_file)
